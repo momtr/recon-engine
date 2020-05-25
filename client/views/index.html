@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecomEngine</title>
+</head>
+<body>
+
+    <h1>
+        Recom Engine
+    </h1>
+
+    <button onclick="getToken()">Get Token</button>
+    <div id="token"></div>
+
+    <button onclick="addItem()">Add item</button>
+
+    <script>
+        function getToken() {
+            fetch('/api/v1/registerApp', { method: 'POST' })
+                .then(res => res.json())
+                .then(json => {
+                    document.querySelector('#token').innerHTML = json.token;
+                })
+        }
+        function addItem() {
+            const data = {
+                userID: 'user_two',
+                itemset: ['a', 'c']
+            }
+            let params = new URLSearchParams(data).toString();
+            fetch(`/api/v1/items/7e63faf8-b8d6-470a-bb3a-5bc13cf07aa1?${params}`,  {
+                method: 'POST'
+            }).then(res => res.json())
+            .then(json => console.log(json));
+        }
+    </script>
+    
+</body>
+</html>
