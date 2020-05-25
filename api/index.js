@@ -142,4 +142,5 @@ module.exports = router;
  *  - hybrid functionality (realtime and historical for faster queries)
  *  - product descriptions
  *  - user actions (different weights)
+ *  - model dashboard at /:token
  */
