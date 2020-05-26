@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReconEngine</title>
+    <link rel="stylesheet" href="https://use.typekit.net/tef2wpr.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism.css">
+    <script src="prism.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="main-wrapper">
+            <div class="h-line">
+                <h1>Reco Engine</h1>
+            </div>
+            <div class="h-small">
+                Documentation
+            </div>
+            <img src="assets/logo.svg" id="logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="s-1">
+            <div class="main-wrapper">
+                <div class="section-item">
+                    <h2>Install</h2>
+                    <h3>NPM <span class="yellow">(recommended)</span></h3>
+                    <p>
+                        For server side code, just install reco-engine and require the package in your node.js file.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+const RecoClient = require('reco-client');
+                        </code>
+                    </pre>
+                    <br>
+
+                    <h3>CDN</h5>
+                    <p>
+                        For client side code (not recommended), you can also use our CDN.
+                    </p>
+                    <pre class="code">
+                        <code class="language-html" id="code-container">
+&lt;script src="recoengine.herokuapp.com/cdn/v1/reco.js"&gt;&lt;/script&gt;
+                        </code>
+                    </pre>
+                </div>
+        
+                <div class="section-item">
+                    <h2>Constructor</h2>
+                    <p>
+                        Then, use the default constructor to connect your application to the reco cloud. Please insert your copied API key instead of YOUR_API_KEY.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+// insert API KEY
+let reco = new RecoClient({ token: 'YOUR_API_KEY' })
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="section-item">
+                    <h2>User actions</h2>
+                    <p>
+                        Whenever a user takes an action, send a message to our API using the SDK. 
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+// userID and item are strings
+reco.userAction(userID, item);
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="section-item">
+                    <h2>Train your model</h2>
+                    <p>
+                        When you have pushed enough data to our cloud, you can train a new model. This may take a few minutes.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+// train the model (returns promise)
+reco.trainModel()
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="section-item">
+                    <h2>Recommend items</h2>
+                    <p>
+                        When you have trained a model, you can start recommending items. You can do that by specifiying the userID.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+// recommendations for a user
+let recommendations = await reco.recommend(userID);
+                        </code>
+                    </pre>
+                    <p>
+                        The response looks like following:
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+{
+    message: "✅ Recommendations for user ${userID} are given!",
+    recommendations: [
+        { item: 'itemID', confidence: 0.5 },
+        { item: 'itemID', confidence: 0.5 },
+        ...
+    ]
+}
+                        </code>
+                    </pre>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="main-wrapper">
+            <div class="footer-conatiner">
+                <div class="footer-col">
+                    <div class="footer-heading">About</div>
+                    <div class="footer-list">
+                        <div class="footer-text">
+                            <a href="#">Reco Engine</a>
+                        </div>
+                        <div class="footer-text">
+                            <a href="#">Algorithm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-heading">Docs</div>
+                    <div class="footer-list">
+                        <div class="footer-text">
+                            <a href="#">Quick Guide</a>
+                        </div>
+                        <div class="footer-text">
+                            <a href="#">Installation</a>
+                        </div>
+                        <div class="footer-text">
+                            <a href="#">API Key</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-heading">Contact</div>
+                    <div class="footer-text">
+                        <a href="mailto:mitterdorfer.moritz@gmail.com">Email</a>
+                    </div>
+                    <div class="footer-text">
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

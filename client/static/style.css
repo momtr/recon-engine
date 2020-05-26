@@ -1,0 +1,202 @@
+html, body {
+    height: 100%;
+    width: 100;
+    margin: 0;  
+    font-size: 120%;
+    font-family: neuzeit-grotesk, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    text-align: center;
+    width: 100%;
+    background-color: #ffd700;
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    margin-bottom: 5%;
+    font-weight: 700;
+}
+
+.h-line {
+    padding-top: 10vh;
+}
+
+.h-small {
+    font-family: neuzeit-grotesk, sans-serif;
+    font-weight: 400;
+}
+
+#logo {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+section {
+    padding: 5%;
+}
+
+.two-col {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.col {
+    flex: 1 1 0px;
+}
+
+.col p, .col ul {
+    font-weight: 400;
+    margin: 0;
+}
+
+.col-img {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 5%;
+}
+
+.col-img-big {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 5%;
+}
+
+.orange {
+    color: #dd9300
+}
+
+.s-2 {
+    background-color: rgb(15, 15, 15);
+    color: white;
+    font-weight: 400;
+    margin-top: 5%;
+    padding: 5%;
+}
+
+.s-2 h2 {
+    color: #ffd700;
+}
+
+.c {
+    text-align: center;
+}
+
+.bt-wide {
+    width: 40%;
+    margin: 5% 30%;
+    padding: 1%;
+    font-family: neuzeit-grotesk, sans-serif;
+    font-weight: 700;
+    font-size: 100%;
+    border: 0;
+    border-radius: 4px;
+    background-color: #ffd700;
+}
+
+.main-wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+footer {
+    background-color: rgb(15, 15, 15);
+    color: white;
+    margin-top: 10%;
+    padding: 5%;
+}
+
+.footer-conatiner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.footer-col {
+    flex: 1 1 0px;
+}
+
+.footer-heading {
+    font-weight: 700;
+    color: #ffd700;
+}
+
+.footer-text {
+    font-weight: 400;
+    font-size: 80%;
+    margin-top: 10px;
+}
+
+a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.code {
+    font-size: 10%;
+    text-align: left;
+}
+
+.code-container {
+    font-size: 100%;
+}
+
+.yellow {
+    color: #ffd700;
+}
+
+.showInstruction {
+    display: none;
+}
+
+.section-item {
+    margin-bottom: 10%;
+}
+
+pre {
+    border-radius: 4px;
+    padding: 2%;
+}
+
+.code-container {
+    font-family: monospace, sans-serif;
+}
+
+#apiKey {
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+@media (max-width: 400px) {
+    body {
+        font-size: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    .two-col {
+        flex-direction: column;
+    }
+    .col-img {
+        width: 30%;
+        margin-top: 5%;
+    }
+}
+
+@media (max-width: 1400px) {
+    #logo {
+        width: 34%;
+    }
+}
