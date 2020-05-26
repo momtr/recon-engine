@@ -1,4 +1,4 @@
-const APP = 'http://localhost:3000';
+const APP = 'http://reconengine.herokuapp.com/';
 
 class ReconClient {
 

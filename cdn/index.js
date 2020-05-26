@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/reco.js', (req, res, next) => {
-    res.sendFile(__dirname + '/static/reco.js');
+router.get('/recon.js', (req, res, next) => {
+    res.sendFile(__dirname + '/static/recon.js');
 });
 
 module.exports = router;
