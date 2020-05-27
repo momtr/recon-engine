@@ -85,12 +85,14 @@ recon.userAction(userID, item)
                 <div class="section-item">
                     <h2>Train your model</h2>
                     <p>
-                        When you have pushed enough data to our cloud, you can train a new model. This may take a few minutes.
+                        When you have pushed enough data to our cloud, you can train a new model. This may take a few minutes. Please take into consideration, that training should not be done after every user action!
                     </p>
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
 // train the model (returns promise)
 recon.trainModel()
+
+// 🔴 only once or twice a day!
                         </code>
                     </pre>
                 </div>
