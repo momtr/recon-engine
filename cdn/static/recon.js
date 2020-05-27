@@ -48,4 +48,4 @@ class ReconClient {
 
 }
 
-module.exports = { ReconClient, APP };
+module.exports = ReconClient;
