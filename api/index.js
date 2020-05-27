@@ -37,6 +37,9 @@ router.post('/app', (req, res, next) => {
 });
 
 router.post('/items/:token', (req, res, next) => {
+
+    console.log('new request');
+
     /** validate */
     Object.assign(req.query, req.params);
     req.query.itemlist = (req.query.itemlist.indexOf(',') != -1) ? req.query.itemlist.split(',') : [req.query.itemlist];

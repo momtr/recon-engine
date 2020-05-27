@@ -3,6 +3,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static('./client/static'));
+
 const cors = require('cors');
 app.use(cors())
 
