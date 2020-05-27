@@ -1,4 +1,4 @@
-const APP = 'http://reconengine.herokuapp.com/';
+const APP = 'http://reconengine.herokuapp.com';
 
 class ReconClient {
 
@@ -47,5 +47,3 @@ class ReconClient {
     }
 
 }
-
-module.exports = ReconClient;
