@@ -1,4 +1,5 @@
-const APP = 'http://reconengine.herokuapp.com';
+//const APP = 'http://reconengine.herokuapp.com';
+const APP = 'http://127.0.0.1:3000';
 
 class ReconClient {
 
@@ -23,7 +24,7 @@ class ReconClient {
 
     async userMultipleActions(userID, itemlist) {
         const params = new URLSearchParams({ userID, itemlist })
-        const res = fetch(`${APP}/api/v1/items/${this.token}?${params}`, { method: 'POST' });
+        const res = await fetch(`${APP}/api/v1/items/${this.token}?${params}`, { method: 'POST' });
         return await res.json();
     }
 
@@ -46,4 +47,22 @@ class ReconClient {
         return json.recommendations;
     }
 
+    recommendAnonymously(item_list, callback) {
+        let userID = `anonymous_${uuid(20)}`
+        this.userMultipleActions(userID, item_list).then(res => {
+            this.recommend(userID).then(res => callback(res))
+        }).catch(err => {
+            if(err) throw err;
+        })
+    }
+
+}
+
+function uuid(length) {
+    let ret = '';
+    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+    for(let i = 0; i < length; i++) {
+        ret += chars[Math.floor(Math.random() * (chars.length-1))];
+    }   
+    return ret;
 }

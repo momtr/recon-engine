@@ -71,6 +71,10 @@ router.post('/items/:token', (req, res, next) => {
                                 itemlist: req.query.itemlist
                             });
                     }
+                    res.json({
+                        message: '✅ Stored user action',
+                        userID: req.query.userID
+                    });
                 })
         } else 
             sendErrorMessage(res, '🔴 App does not exist!', 404);

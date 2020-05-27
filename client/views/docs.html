@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReconEngine</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon48.ico">
     <link rel="stylesheet" href="https://use.typekit.net/tef2wpr.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="prism.css">
@@ -53,12 +54,17 @@ const reconEngine = require('recon-engine-client');
                 <div class="section-item">
                     <h2>Constructor</h2>
                     <p>
-                        Then, use the default constructor to connect your application to the recon cloud. Please insert your copied API key instead of YOUR_API_KEY.
+                        Then, use the default constructor to connect your application to the recon cloud. Please insert your copied API key instead of YOUR_API_KEY. In addition, you can pass in a calback which is called when the ReconClient is connected.
                     </p>
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
 // insert API KEY
 let recon = new ReconClient({ token: 'YOUR_API_KEY' })
+
+// example
+let recon = new ReconClient({ token: 'YOUR_API_KEY' }, () => {
+    console.log('🍭 Connected');
+}));
                         </code>
                     </pre>
                 </div>
@@ -66,7 +72,7 @@ let recon = new ReconClient({ token: 'YOUR_API_KEY' })
                 <div class="section-item">
                     <h2>User actions</h2>
                     <p>
-                        Whenever a user takes an action, send a message to our API using the SDK. 
+                        Whenever an user takes an action, send a message to our API using the SDK. 
                     </p>
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
@@ -92,11 +98,11 @@ recon.trainModel()
                 <div class="section-item">
                     <h2>Recommend items</h2>
                     <p>
-                        When you have trained a model, you can start recommending items. You can do that by specifiying the userID.
+                        When you have trained a model, you can start recommending items. You can do that by specifying the userID.
                     </p>
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
-// recommendations for a user
+// recommendations for an user
 let recommendations = await recon.recommend(userID);
                         </code>
                     </pre>
@@ -113,6 +119,24 @@ let recommendations = await recon.recommend(userID);
         ...
     ]
 }
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="section-item">
+                    <h2>Recommend items anonymously</h2>
+                    <p>
+                        You can also recommend items anonymously whithout creating an user. Just use an array of itemIDs containing items the user interacted with. In addition, you have to specify a valid callback.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+recon.recommendAnonymously(itemIDArray, callback)
+
+// example
+recon.recommendAnonymously(['item_1', 'item_2'], recommendations => {
+    console.log('🍭 Recommendations', recommendations);
+    // manipulate the DOM etc.
+}))
                         </code>
                     </pre>
                 </div>
@@ -165,6 +189,14 @@ let recommendations = await recon.recommend(userID);
                     <div class="footer-text">
                         <a href="#">Support</a>
                     </div>
+                </div>
+            </div>
+            <div class="footer-footer">
+                &copy; 2020 Recon Engine. <br>
+                <div class="footer-linklist">
+                    <a href="#">Impress</a>, 
+                    <a href="#">Cookie Policy</a>, 
+                    <a href="#">Data Policy</a>
                 </div>
             </div>
         </div>
