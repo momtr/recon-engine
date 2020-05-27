@@ -35,7 +35,7 @@
                     </p>
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
-const reconEngine = require('recon-engine-client');
+const reconEngine = require('recon-engine-client')
                         </code>
                     </pre>
                     <br>
@@ -63,7 +63,7 @@ let recon = new ReconClient({ token: 'YOUR_API_KEY' })
 
 // example
 let recon = new ReconClient({ token: 'YOUR_API_KEY' }, () => {
-    console.log('🍭 Connected');
+    console.log('🍭 Connected')
 }));
                         </code>
                     </pre>
@@ -77,7 +77,7 @@ let recon = new ReconClient({ token: 'YOUR_API_KEY' }, () => {
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
 // userID and item are strings
-recon.userAction(userID, item);
+recon.userAction(userID, item)
                         </code>
                     </pre>
                 </div>
@@ -103,7 +103,7 @@ recon.trainModel()
                     <pre class="code">
                         <code class="language-javascript" id="code-container">
 // recommendations for an user
-let recommendations = await recon.recommend(userID);
+let recommendations = await recon.recommend(userID)
                         </code>
                     </pre>
                     <p>
@@ -134,9 +134,25 @@ recon.recommendAnonymously(itemIDArray, callback)
 
 // example
 recon.recommendAnonymously(['item_1', 'item_2'], recommendations => {
-    console.log('🍭 Recommendations', recommendations);
+    console.log('🍭 Recommendations', recommendations)
     // manipulate the DOM etc.
 }))
+                        </code>
+                    </pre>
+                </div>
+
+                <div class="section-item">
+                    <h2>Recommend items anonymously with storage</h2>
+                    <p>
+                        If you want to store the items the user has interacted with locally, you can use addItem. In addition, a new anonymous userID is created for that user. Whener you want to get recommendations for that user, call recommendAnonymouslyByStorage.
+                    </p>
+                    <pre class="code">
+                        <code class="language-javascript" id="code-container">
+// add an item (works with cookies)
+recon.addItem(itemID)
+
+// get recommendations for local user 
+recon.recommendAnonymouslyByStorage(callback)
                         </code>
                     </pre>
                 </div>

@@ -1,5 +1,6 @@
-const APP = 'http://reconengine.herokuapp.com';
-// production: const APP = 'http://127.0.0.1:3000';
+//const APP = 'http://reconengine.herokuapp.com';
+// production: 
+const APP = 'http://127.0.0.1:3000';
 
 class ReconClient {
 
@@ -18,8 +19,35 @@ class ReconClient {
                     callback(this.token);
             })
             .catch(err => {
-                throw new Error('There was an error loading your app. The app might not exist!');
+                // todo
             })
+    }
+
+    addItem(itemID) {
+        if(!itemID)
+            throw new Error('ItemID is not valid!');
+        let currentCookies = Cookies.get('items');
+        if(currentCookies)
+            Cookies.set('items', `${currentCookies},${itemID}`);
+        else
+            Cookies.set('items', itemID);
+    }
+
+    getItems() {
+        return Cookies.get('items').split(',');
+    }
+
+    setUserID() {
+        if(!Cookies.get('userID')) {
+            let userID = `anonymous_${uuid(20)}`;
+            Cookies.set('userID', userID);
+            return userID;
+        }
+        else return Cookies.get('userID');
+    }
+
+    getUserID() {
+        return Cookies.get('userID');
     }
 
     async userMultipleActions(userID, itemlist) {
@@ -54,6 +82,37 @@ class ReconClient {
         }).catch(err => {
             if(err) throw err;
         })
+    }
+
+    recommendAnonymouslyByStorage(callback) {
+        let items = this.getItems();
+        if(items) {
+            let userID = this.setUserID();
+            this.userMultipleActions(userID, items).then(res => {
+                this.recommend(userID).then(res => callback(res))
+            }).catch(err => {
+                if(err) throw err;
+            })
+        }
+        else
+            throw new Error('Items are not defined. Use addItem() to add an item.');
+    }
+
+}
+
+class Cookies {
+
+    static set(key, val) {
+        document.cookie = `${key}=${val}`;
+    }
+
+    static get(key) {
+        let pairs = document.cookie.split('; ');
+        for(let i of pairs) {
+            let sides = i.split('=');
+            if(key == sides[0])
+                return sides[1];
+        }
     }
 
 }

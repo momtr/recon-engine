@@ -69,12 +69,13 @@ router.post('/items/:token', (req, res, next) => {
                             .set({
                                 lastUpdate: Date.now(),
                                 itemlist: req.query.itemlist
-                            });
+                            }).then(() => {
+                                res.json({
+                                    message: '✅ Stored user action',
+                                    userID: req.query.userID
+                                });
+                            })
                     }
-                    res.json({
-                        message: '✅ Stored user action',
-                        userID: req.query.userID
-                    });
                 })
         } else 
             sendErrorMessage(res, '🔴 App does not exist!', 404);
