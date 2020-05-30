@@ -1,3 +1,5 @@
+<img src="https://github.com/moritzmitterdorfer/recon-engine/blob/master/img.png">
+
 # recon-engine
 🍭 recommendations as a service (RaaS) web api
 <br>
